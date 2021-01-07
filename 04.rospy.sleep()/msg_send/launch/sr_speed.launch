@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="msg_send" type="sender_speed.py" name="sender_sp"/>
+    <node pkg="msg_send" type="receiver_speed.py" name="receiver_sp" output="screen"/>
+</launch>

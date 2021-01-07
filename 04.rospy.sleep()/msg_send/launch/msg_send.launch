@@ -1,0 +1,4 @@
+<launch>
+    <node pkg = "msg_send" type = "msg_sender.py" name="msg_sender" />
+    <node pkg = "msg_send" type = "msg_receiver.py" name = "msg_receiver"/>
+</launch>
