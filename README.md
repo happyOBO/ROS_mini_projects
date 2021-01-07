@@ -84,25 +84,25 @@
 │       ├── package.xml
 │       └── src
 │           └── xycar_motor_a2.py
-├── 07.3D자동차제어
-│   ├── 3D자동차제어프로그래밍.pdf
-│   └── rviz_xycar
-│       ├── CMakeLists.txt
-│       ├── launch
-│       │   ├── move_joint.launch
-│       │   ├── rviz_drive.launch
-│       │   └── xycar_3d.launch
-│       ├── package.xml
-│       ├── rviz
-│       │   ├── rviz_drive.rviz
-│       │   ├── rviz_odom.rviz
-│       │   └── xycar_3d.rviz
-│       ├── src
-│       │   ├── converter.py
-│       │   ├── move_joint.py
-│       │   └── rviz_8_drive.py
-│       └── urdf
-│           └── xycar_3d.urdf
-└── README.md
+└── 07.3D자동차제어
+    ├── 3D자동차제어프로그래밍.pdf
+    └── rviz_xycar
+        ├── CMakeLists.txt
+        ├── launch
+        │   ├── move_joint.launch
+        │   ├── rviz_drive.launch
+        │   └── xycar_3d.launch
+        ├── package.xml
+        ├── rviz
+        │   ├── rviz_drive.rviz
+        │   ├── rviz_odom.rviz
+        │   └── xycar_3d.rviz
+        ├── src
+        │   ├── converter.py
+        │   ├── move_joint.py
+        │   └── rviz_8_drive.py
+        └── urdf
+            └── xycar_3d.urdf
+
 
 ```
