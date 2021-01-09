@@ -120,5 +120,4 @@
     │   │   └── pan_tilt.urdf
     │   └── urdf.rviz
     └── README.md
-
 ```
