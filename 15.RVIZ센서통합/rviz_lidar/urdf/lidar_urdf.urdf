@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<robot name="xycar" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="laser"/>
+    <link name="baseplate">
+        <visual>
+        <material name="black"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <box size="0.1 0.1 0.07"/>
+        </geometry>
+        </visual>
+    </link>
+
+
+    <joint name="laser_to_baseplate" type="fixed">
+        <parent link="laser"/>
+        <child link="baseplate"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+
+    <link name="front"/>
+    <joint name="baseplate_to_front" type="fixed">
+        <parent link="baseplate"/>
+        <child link="front"/>
+        <origin rpy="0 0 0" xyz="0.1 0 0"/>
+    </joint>
+
+    <link name="back"/>
+    <joint name="baseplate_to_back" type="fixed">
+        <parent link="baseplate"/>
+        <child link="back"/>
+        <origin rpy="0 0 -3.14" xyz="-0.1 0 0"/>
+    </joint>
+
+    <link name="left"/>
+    <joint name="baseplate_to_left" type="fixed">
+        <parent link="baseplate"/>
+        <child link="left"/>
+        <origin rpy="0 0 1.57" xyz="0 0.1 0"/>
+    </joint>
+
+    <link name="right"/>
+    <joint name="baseplate_to_right" type="fixed">
+        <parent link="baseplate"/>
+        <child link="right"/>
+        <origin rpy="0 0 -1.57" xyz="0 -0.1 0"/>
+    </joint>
+
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+</robot>
+
+

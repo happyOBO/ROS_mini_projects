@@ -1,0 +1,14 @@
+<launch>
+    
+    <!-- 박스형상 모델링 -->
+    <param name="robot_description" textfile="$(find rviz_lidar)/urdf/lidar_urdf.urdf"/>
+    <param name="use_gui" value="true"/>
+    <!-- Rviz 설정 파일 -->
+    <node name="rviz_visualizer" pkg="rviz" type="rviz" required="true" args="-d $(find rviz_lidar)/rviz/lidar_urdf.rviz" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+    <!-- 라이다 토픽 발행 -->
+    <node name="rosbag_play" pkg="rosbag" type="play" output="screen" required="true" args="$(find rviz_lidar)/src/lidar_topic.bag"/>
+    <!-- 토픽 변환 -->
+    <node name="lidar_converter" pkg="rviz_lidar" type="lidar_urdf.py"/>
+
+</launch>

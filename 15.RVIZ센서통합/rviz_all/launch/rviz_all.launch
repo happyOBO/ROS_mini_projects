@@ -1,0 +1,22 @@
+<launch>
+    
+    <!-- 박스형상 모델링 -->
+    <param name="robot_description" textfile="$(find rviz_all)/urdf/rviz_all.urdf"/>
+    <param name="use_gui" value="true"/>
+    <!-- Rviz 설정 파일 -->
+    <node name="rviz_visualizer" pkg="rviz" type="rviz" required="true" args="-d $(find rviz_all/rviz/rviz_all.rviz" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+    <!-- 자동차 8자 주행 -->
+    <node name="driver" pkg="rviz_xycar" type="odom_8_drive.py" /> 
+    <node name="converter" pkg="rviz_xycar" type="converter.py" />
+    <node name="rviz_odom" pkg="rviz_all" type="odom_imu.py" />
+
+    <!-- 라이다 토픽 발행 -->
+    <node name="rosbag_play" pkg="rosbag" type="play" output="screen" required="true" args="$(find rviz_lidar)/src/lidar_topic.bag"/>
+    <node name="lidar_converter" pkg="rviz_lidar" type="lidar_urdf.py"/>
+
+    <!-- IMU 토픽 발행 -->
+    <node name="imu_generator" pkg="rviz_imu" type="imu_generator.py" output="screen"/>
+
+</launch>

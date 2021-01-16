@@ -1,0 +1,9 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/apple/xycar_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/kinetic/lib/python2.7/dist-packages",
+        "/home/apple/42dot/carla/PythonAPI/carla/",
+        "/home/apple/42dot/scenario_runner",
+        "/home/apple/leaderboard"
+    ]
+}
