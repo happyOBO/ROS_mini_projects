@@ -1,0 +1,9 @@
+<launch>
+  <node name="xycar_motor" pkg="xycar_motor" type="xycar_motor_b2.py" output="screen" >
+    <param name="angle_offset" value="0" />
+  </node>
+  <!-- sensor_drive -->
+  <node pkg="xycar_ultrasonic" type="xycar_ultrasonic.py" name="xycar_ultrasonic"/>
+  <node name="ultra_driver" pkg="xycar_ultrasonic" type="ultra_gostop.py" 
+        output="screen"/>
+</launch>

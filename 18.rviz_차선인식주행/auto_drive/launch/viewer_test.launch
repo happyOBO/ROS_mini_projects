@@ -1,0 +1,27 @@
+<launch>
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/videoCAM" />
+    <param name="autoexposure" value="false"/>
+    <param name="exposure" value="150"/>
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+
+  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+
+  <node pkg="xycar_imu" type="9dof_imu_node.py" name="xycar_imu" output="screen">
+    <param name="rviz_mode" type="string" value="true" />
+  </node>
+  <node name="rviz_imu" pkg="rviz" type="rviz" args="-d $(find xycar_imu)/rviz/view_imu.rviz" />
+
+  <!-- ultrasonic -->
+  <node pkg="xycar_ultrasonic" type="xycar_ultrasonic.py" name="xycar_ultrasonic" output="screen" />
+  <node pkg="xycar_ultrasonic" type="xycar_ultrasonic_viewer.py" name="xycar_ultrasonic_viewer" output="screen" />
+
+</launch>

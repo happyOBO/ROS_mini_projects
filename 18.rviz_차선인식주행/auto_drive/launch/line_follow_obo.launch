@@ -1,0 +1,38 @@
+<launch>
+
+    <!-- params 
+    <param name="robot_description" textfile="$(find rviz_xycar)/urdf/xycar_3d.urdf" />
+    <param name="speed_coef" value="0.3" />
+    <param name="wheel_radius" value="0.07" />
+    <param name="xycar_length" value="0.41" />-->
+
+    <!--rosbag
+    <node name="play" pkg="rosbag" type="play" args="-l -q $(find line_drive)/src/simulation.bag"/>-->
+    
+    <!-- cam -->
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+        <param name="video_device" value="/dev/videoCAM" />
+        <param name="autoexposure" value="false"/>
+        <param name="exposure" value="100"/>
+        <param name="image_width" value="640" />
+        <param name="image_height" value="480" />
+        <param name="pixel_format" value="yuyv" />
+        <param name="camera_frame_id" value="usb_cam" />
+        <param name="io_method" value="mmap"/>
+    </node>
+
+    <!-- opencv -->
+    <node name="line_find" pkg="auto_drive" type="line_find_custom.py" output="screen" required="true"/>
+
+    <!-- visual 
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rviz_xycar)/rviz/line_drive.rviz" required="True" />
+    <node name="converter" pkg="rviz_xycar" type="converter.py" />
+    <node name="rviz_odom" pkg="rviz_xycar" type="rviz_odom.py" />-->
+    <node name="xycar_motor_b2" pkg="xycar_motor" type="xycar_motor_b2.py" output="screen" >
+        <param name="angle_offset" value="0" />
+    </node>
+    
+    <node name="cal" pkg="auto_drive" type="line_follow_obo.py" />
+
+</launch>

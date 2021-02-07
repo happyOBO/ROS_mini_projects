@@ -1,0 +1,18 @@
+<launch>
+    <param name="robot_description" textfile="$(find rviz_xycar)/urdf/xycar_3d.urdf"/>
+    <param name="use_gui" value="true"/>
+
+    <!-- rviz display -->
+    <node name="rviz_visualizer" pkg="rviz" type="rviz" required="true" 
+                args="-d $(find rviz_xycar)/rviz/rviz_drive.rviz"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" 
+                type="state_publisher"/>
+
+    <node name="rosbag_play" pkg="rosbag" type="play" output="screen" required="true" args="-l $(find hough_drive)/src/cam_topic.bag"/>
+
+    <node name="converter" pkg="rviz_xycar" type="converter.py" />
+    <node name="rviz_odom" pkg="rviz_xycar" type="rviz_odom.py" />
+    <node name="driver" pkg="hough_drive" type="xycar_drive.py" output="screen"/>
+    <node name="hough_find" pkg="hough_drive" type="hough_find.py" output="screen"/> 
+</launch>
